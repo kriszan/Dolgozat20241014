@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title><%= message %></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Index</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <p><%= message %></p>
+  <div class="alert alert-primary" role="alert">
+    <%= console.log(message) %>
+    <% for(let i = 0; i< message.errors.lenght ;i++) { %>
+        <p> <%= message.errors[i] %> </p>
+        <% } %>
+  </div>
+  <form method="post">
+    <div class="form-group">
+      <label for="name">Név: </label>
+      <input type="text" class="form-control" id="name" aria-describedby="name" name="name"
+        placeholder="Enter your name" value="<%= message.name %>" >
+    </div>
+    <div class="form-group">
+      <label for="email">Emailcím: </label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" value="<%= message.email %>">
+    </div>
+    <div class="form-group">
+      <label for="costumers">Nézők száma: </label>
+      <input type="number" min="1" max="10" value="1" class="form-control" id="costumers" name="costumers" value="<%= message.costumers %>">
+    </div>
+    <div class="form-group">
+      <label for="meeting-time">Dátum:</label>
+      <input type="datetime-local" id="datetime" name="datetime" min="<%= message.datetime %> "/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
 </body>
+
 </html>
